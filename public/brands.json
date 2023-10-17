@@ -1,0 +1,34 @@
+[
+    {
+      "name": "Toyota",
+      "image": "https://static.tcimg.net/vehicles/logo/384x384_full_color/cf0bb1b2deca5e84/Toyota.png"
+    },
+    {
+      "name": "Ford",
+      "image": "https://static.tcimg.net/vehicles/logo/991x384_full_color/588008e646f944ab/Ford.png"
+    },
+    {
+      "name": "BMW",
+      "image": "https://static.tcimg.net/vehicles/logo/384x384_full_color/614861eca7caf1b4/BMW.png"
+    },
+    {
+      "name": "Mercedes-Benz",
+      "image": "https://static.tcimg.net/vehicles/logo/384x384_full_color/959be7e00726a9e0/Mercedes-Benz.png"
+    },
+    {
+      "name": "Audi",
+      "image": "https://static.tcimg.net/vehicles/logo/1088x384_full_color/0598fce6d069a5a0/Audi.png"
+    },
+    {
+      "name": "Honda",
+      "image": "https://static.tcimg.net/vehicles/logo/605x384_full_color/00fea4dbe4426fc2/Honda.png"
+    },
+    {
+      "name": "Chevrolet",
+      "image": "https://static.tcimg.net/vehicles/logo_text/820x384_full_color/1dd21e0781f0e450/Chevrolet.png"
+    },
+    {
+      "name": "Volkswagen",
+      "image": "https://static.tcimg.net/vehicles/logo_text/384x384_full_color/2e91116c833bfded/Volkswagen.png"
+    }
+  ]
