@@ -1,11 +1,40 @@
 const AddProduct = () => {
+
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const photo = form.photo.value
+    const productName = form.productName.value
+    const brandName = form.brandName.value
+    const type = form.type.value
+    const price = form.price.value
+    const description = form.description.value
+    const rating = form.rating.value
+    const product = {photo, productName, brandName, type, price, description, rating}
+    console.log(product);
+
+    fetch('http://localhost:5000/products',{
+      method : 'POST',
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      body : JSON.stringify(product)
+    })
+    .then(res=> res.json() )
+    .then(data => {
+      console.log(data);
+    })
+    
+  }
+
+
   return (
     <div className="max-w-7xl p-5 mx-auto">
-      <form>
+      <form onSubmit={handleAddProduct}>
         <div className="w-full">
 
 
-          <div className="grid grid-cols-2 gap-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
           <div className="form-control">
     <label className="label">
       <span className="label-text text-3xl font-bold ">Image:</span>
@@ -28,7 +57,7 @@ const AddProduct = () => {
       <input
         type="text"
         required
-        name="name"
+        name="productName"
         placeholder="Product Name"
         className="w-full input input-bordered"
       />
@@ -43,7 +72,7 @@ const AddProduct = () => {
       <input
         type="text"
         required
-        name="BrandName"
+        name="brandName"
         placeholder="Brand Name"
         className="w-full input input-bordered"
       />
