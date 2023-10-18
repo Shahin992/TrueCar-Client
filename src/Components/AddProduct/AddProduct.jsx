@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 const AddProduct = () => {
 
   const handleAddProduct = (e) => {
@@ -23,6 +25,12 @@ const AddProduct = () => {
     .then(res=> res.json() )
     .then(data => {
       console.log(data);
+      Swal.fire(
+        'Good job!',
+        'Product Added Successfully!',
+        'success'
+      )
+      form.reset();
     })
     
   }
@@ -136,7 +144,7 @@ const AddProduct = () => {
           </div>
 
         </div>
-        <button className="w-full btn btn-secondary my-5 text-3xl font-bold " type="submit">Add Product</button>
+        <button  className="w-full btn btn-secondary my-5 text-3xl font-bold " type="submit">Add Product</button>
       </form>
     </div>
   );

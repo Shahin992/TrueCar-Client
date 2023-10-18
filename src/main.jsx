@@ -12,6 +12,7 @@ import Register from './Components/Register/Register.jsx';
 import MyCart from './Components/My Cart/MyCart';
 import LogIn from './Components/Login/LogIn';
 import BrandProduct from './Components/BrandProduct/BrandProduct';
+import AuthProvider from './Components/AuthProvider/AuthProvider';
 
 
 const router = createBrowserRouter([
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       {
         path : '/home/:name',
         element :<BrandProduct></BrandProduct>,
-        loader : ()=> fetch('/brands.json')
+        loader : ()=> fetch('http://localhost:5000/products')
       }
     ]
 
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <AuthProvider>
    <RouterProvider router={router} />
-  </React.StrictMode>,
+  </AuthProvider>,
 )
