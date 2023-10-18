@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Brands = () => {
     const [brandName,setBrandName] = useState([])
@@ -21,11 +22,12 @@ const Brands = () => {
                     return (
                         <div>
                                
-                               <div className="hover:shadow-black shadow-gray-500 rounded-xl shadow-2xl w-full lg:w-[250px] h-[150px] flex justify-center card-shadow  items-center gap-5">
+                           <Link to={`/home/${brand.name}`}>
+                           <div className="hover:shadow-black shadow-gray-500 rounded-xl shadow-2xl w-full lg:w-[250px] h-[150px] flex justify-center card-shadow  items-center gap-5">
                            
                            <img className="w-10 h-10 " src={brand.image} alt={brand.name}/>
                            <h1 className="font-semibold text-xl">{brand.name}</h1>
-                       </div>
+                       </div></Link>
 
 
 
