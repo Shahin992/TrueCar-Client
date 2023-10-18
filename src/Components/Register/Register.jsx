@@ -65,6 +65,7 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(name,email,password);
+    const userInfo = {username,name,photo,email,password}
 
     if (password.length < 6){
       Swal.fire({
@@ -101,6 +102,15 @@ const Register = () => {
     createUser(email,password)
     .then(result =>{
       console.log(result.user);
+      fetch('http://localhost:5000/users',{
+        method : 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(userInfo)
+
+      })
+
       Swal.fire(
         'Good job!',
         'Account Created Successfully!',

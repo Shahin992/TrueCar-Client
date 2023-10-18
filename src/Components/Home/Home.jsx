@@ -14,7 +14,7 @@ const Home = () => {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-2xl">
             <h1 className="mb-5 text-5xl font-bold">Your Dream Car Awaits! Explore Now. </h1>
-            <button className="btn bg-base-300">Shop Now</button>
+            <button className="text-white bg-accent-focus btn">Shop Now</button>
           </div>
         </div>
       </div>

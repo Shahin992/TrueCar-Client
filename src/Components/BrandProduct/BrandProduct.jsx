@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { Navigation, Pagination, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -17,7 +17,7 @@ const BrandProduct = () => {
 
   return (
     
-    <div className="my-8">
+    <div className="my-8 ">
 
       <div className="my-8">
         <Swiper
@@ -45,7 +45,7 @@ const BrandProduct = () => {
                     Unbeatable Savings: Get Your Discount Now!
                   </h1>
 
-                  <button className="btn btn-primary">Shop Now</button>
+                  <button className="text-white bg-accent-focus btn">Shop Now</button>
                 </div>
               </div>
             </div>
@@ -67,7 +67,7 @@ const BrandProduct = () => {
                     Incredible Deals on TrueCar
                   </h1>
 
-                  <button className="btn btn-primary">Shop Now</button>
+                  <button className="text-white bg-accent-focus btn">Shop Now</button>
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@ const BrandProduct = () => {
                     Next Adventure Begins Here!
                   </h1>
 
-                  <button className="btn btn-primary">Shop Now</button>
+                  <button className="text-white bg-accent-focus btn">Shop Now</button>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@ const BrandProduct = () => {
                     Start Your Automotive Journey Today!"
                   </h1>
 
-                  <button className="btn btn-primary">Shop Now</button>
+                  <button className="text-white bg-accent-focus btn">Shop Now</button>
                 </div>
               </div>
             </div>
@@ -119,17 +119,42 @@ const BrandProduct = () => {
         </Swiper>
       </div>
 
-      {
+
+              <h3 className="flex justify-center items-center my-12 text center text-4xl font-extrabold">Your favorite Brand Products</h3>
+     <div className="grid grid-cols-1 p-3 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+     {
         filteredData.map((data) =>   { 
           console.log(data.productName);
           return <div>
-             <h3>Name: {data.productName}</h3>
-             <h3>Brand: {data.brandName}</h3>
+
+<div className="card  bg-base-100 shadow-xl">
+  <figure><img className="h-60 w-full" src={data.photo} alt="Shoes" /></figure>
+  <div className="card-body rounded-b-3xl bg-zinc-300 shadow-2xl shadow-slate-400">
+    <h2 className="card-title text-3xl font-bold mb-2">
+      {data.productName}
+    </h2>
+    <div className="flex justify-between">
+      <h3 className="text-lg font-medium">Brand: {data.brandName}</h3>
+      <h3 className="text-lg font-medium">Type: {data.type}</h3>
+    </div>
+    <div className="flex justify-between my-2">
+      <h3 className="text-lg font-medium">Price: ${data.price}</h3>
+      <h3 className="text-lg font-medium">Rating:{data.rating}</h3>
+    </div>
+
+    <div className="card-actions flex justify-between ">
+     <Link >  <button className=" text-white bg-accent-focus btn ">Details</button> </Link>
+      <Link to={`/update/${data._id}`}> <button className="text-white bg-accent-focus btn">Update</button> </Link>
+    </div>
+  </div>
+</div>
+             
           </div>
            
           
         })
       }
+     </div>
 
      
 

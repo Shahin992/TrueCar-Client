@@ -1,9 +1,90 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 const LogIn = () => {
+
+  const {login,googleLogin,githubLogin} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const googleBtn = () => {
+    googleLogin()
+    .then(result =>{
+      console.log(result.user);
+      Swal.fire(
+        'Good job!',
+        'Log in Successfully!',
+        'success'
+      )
+      navigate(location?.state ? location.state : '/');
+    })
+    .catch(error =>{
+      console.log(error.message); 
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please check your email and password',
+      })
+    })
+  }
+
+  const githubBtn = () => {
+    githubLogin()
+    .then(result =>{
+      console.log(result.user);
+      Swal.fire(
+        'Good job!',
+        'Log in Successfully!',
+        'success'
+      )
+      navigate(location?.state ? location.state : '/');
+    })
+
+    .catch(error =>{
+      console.log(error.message); 
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please check your email and password',
+      })
+    })
+
+  }
+
+  const handleLogin = (e) =>{
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email,password);
+
+    login(email,password)
+    .then(result =>{
+      console.log(result.user);
+      Swal.fire(
+        'Good job!',
+        'Log in Successfully!',
+        'success'
+      )
+      navigate(location?.state ? location.state : '/');
+    })
+
+    .catch(error =>{
+      console.log(error.message); 
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please check your email and password',
+      })
+    })
+  }
+
 
   
     return (
@@ -19,7 +100,7 @@ const LogIn = () => {
           />
         </div>
         <div>
-            <form >
+            <form onSubmit={handleLogin}>
             <h1 className=" text-gray-800 font-bold text-2xl mb-5 text-center">
              Log in!
             </h1>
@@ -93,8 +174,8 @@ const LogIn = () => {
           </div>
 
             <div>
-            <button  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '><FcGoogle className='mr-5 text-2xl'></FcGoogle>Sign in with google</button>
-            <button  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '><FaGithub className='mr-5 text-2xl'></FaGithub>Sign in with github</button>
+            <button onClick={googleBtn}  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '><FcGoogle className='mr-5 text-2xl'></FcGoogle>Sign in with google</button>
+            <button onClick={githubBtn}  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '><FaGithub className='mr-5 text-2xl'></FaGithub>Sign in with github</button>
             </div>
 
         </div>

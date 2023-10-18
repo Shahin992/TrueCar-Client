@@ -1,50 +1,61 @@
+import { useLoaderData, useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-const AddProduct = () => {
 
-  const handleAddProduct = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const photo = form.photo.value
-    const productName = form.productName.value
-    const brandName = form.brandName.value
-    const type = form.type.value
-    const price = form.price.value
-    const description = form.description.value
-    const rating = form.rating.value
-    const product = {photo, productName, brandName, type, price, description, rating}
-    console.log(product);
 
-    fetch('http://localhost:5000/products',{
-      method : 'POST',
-      headers : {
-        'Content-Type' : 'application/json'
-      },
-      body : JSON.stringify(product)
-    })
-    .then(res=> res.json() )
-    .then(data => {
-      console.log(data);
-      if(data.insertedId ){
-        Swal.fire(
-            'Good job!',
-            'Product Added Successfully!',
-          'success'
-          )
+const UpdateProduct = () => {
+    const productsData = useLoaderData();
+    const {_id, photo, productName, brandName, type, price, description, rating} = productsData;
+    const { id } = useParams();
+    console.log(id);
+
+
+
+    const handleUpdateProduct = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const photo = form.photo.value
+        const productName = form.productName.value
+        const brandName = form.brandName.value
+        const type = form.type.value
+        const price = form.price.value
+        const description = form.description.value
+        const rating = form.rating.value
+        const UpdateProduct = {photo, productName, brandName, type, price, description, rating}
+        console.log(UpdateProduct);
+    
+        fetch(`http://localhost:5000/products/${_id}`,{
+          method : 'Put',
+          headers : {
+            'Content-Type' : 'application/json'
+          },
+          body : JSON.stringify(UpdateProduct)
+        })
+        .then(res=> res.json() )
+        .then(data => {
+          console.log(data);
+          if(data.modifiedCount > 0){
+            Swal.fire(
+                'Good job!',
+                'Product Updated Successfully!',
+                'success'
+              )
+          }
+          
+          form.reset();
+        })
+        
       }
-    
-      form.reset();
-    })
-    
-  }
 
+      
 
-  return (
-    <div className="max-w-7xl p-5 mx-auto">
+    return (
+        <div>
+            <div className="max-w-7xl p-5 mx-auto">
       <div>
-        <h3 className='text-center text-4xl font-bold mb-10'>Add Product</h3>
+        <h3 className='text-center text-4xl font-bold mb-10'>Update Product</h3>
       </div>
-      <form onSubmit={handleAddProduct}>
+      <form onSubmit={handleUpdateProduct}>
         <div className="w-full">
 
 
@@ -59,6 +70,7 @@ const AddProduct = () => {
         required
         name="photo"
         placeholder="Image URL"
+        defaultValue={photo}
         className="w-full input input-bordered"
       />
     </label>
@@ -73,6 +85,7 @@ const AddProduct = () => {
         required
         name="productName"
         placeholder="Product Name"
+        defaultValue={productName}
         className="w-full input input-bordered"
       />
     </label>
@@ -88,6 +101,7 @@ const AddProduct = () => {
         required
         name="brandName"
         placeholder="Brand Name"
+        defaultValue={brandName}
         className="w-full input input-bordered"
       />
     </label>
@@ -101,6 +115,7 @@ const AddProduct = () => {
         type="text"
         name="type"
         placeholder="Product Type"
+        defaultValue={type}
         className="w-full input input-bordered"
       />
     </label>
@@ -115,6 +130,7 @@ const AddProduct = () => {
         required
         name="price"
         placeholder="Product Price"
+        defaultValue={price}
         className="w-full input input-bordered"
       />
     </label>
@@ -126,6 +142,7 @@ const AddProduct = () => {
     <label className="input-group">
       <textarea
         placeholder="Product Description"
+        defaultValue={ description}
         required
         name="description"
         className="w-full input input-bordered"
@@ -142,6 +159,7 @@ const AddProduct = () => {
         required
         name="rating"
         placeholder="Product Rating"
+        defaultValue={rating}
         className="w-full input input-bordered"
       />
     </label>
@@ -150,10 +168,12 @@ const AddProduct = () => {
           </div>
 
         </div>
-        <button  className="w-full btn btn-secondary my-5 text-3xl font-bold " type="submit">Add Product</button>
+        <button  className="w-full btn bg-accent-focus my-5 text-3xl font-bold " type="submit">Update Product</button>
       </form>
     </div>
-  );
+            
+        </div>
+    );
 };
 
-export default AddProduct;
+export default UpdateProduct;
