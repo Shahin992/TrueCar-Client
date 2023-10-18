@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useLoaderData, useParams } from "react-router-dom";
 import { Navigation, Pagination, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -119,11 +120,18 @@ const BrandProduct = () => {
       </div>
 
       {
-        filteredData.map((data) => {
+        filteredData.map((data) =>   { 
           console.log(data.productName);
-          <h3>Name: {data.productName}</h3>
+          return <div>
+             <h3>Name: {data.productName}</h3>
+             <h3>Brand: {data.brandName}</h3>
+          </div>
+           
+          
         })
       }
+
+     
 
      
      

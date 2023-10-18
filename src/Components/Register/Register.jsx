@@ -1,8 +1,144 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useContext } from "react";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const {createUser,googleLogin,githubLogin} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+
+  const googleBtn = () => {
+    googleLogin()
+    .then(result =>{
+      console.log(result.user);
+      Swal.fire(
+        'Good job!',
+        'Log in Successfully!',
+        'success'
+      )
+      navigate(location?.state ? location.state : '/');
+    })
+    .catch(error =>{
+      console.log(error.message); 
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please check your email and password',
+      })
+    })
+  }
+
+  const githubBtn = () => {
+    githubLogin()
+    .then(result =>{
+      console.log(result.user);
+      Swal.fire(
+        'Good job!',
+        'Log in Successfully!',
+        'success'
+      )
+      navigate(location?.state ? location.state : '/');
+    })
+
+    .catch(error =>{
+      console.log(error.message); 
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please check your email and password',
+      })
+    })
+
+  }
+
+  const handleRegister = e =>{
+    e.preventDefault();
+    const username = e.target.username.value;
+    const name = e.target.name.value;
+    const photo = e.target.photo.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(name,email,password);
+
+    if (password.length < 6){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Your Password should contain  at least 6 characters.',
+        
+      });
+      return
+    }
+
+    else if (!/[A-Z]/.test(password)){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Your Password should contain  at least 1 Uppercase characters.',
+        
+      });
+      return
+
+    }
+
+    else if (!/([@$!%*#?&])/.test(password)){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Your Password should contain  at least 1 Special characters.',
+        
+      });
+      return;
+    }
+
+  
+    createUser(email,password)
+    .then(result =>{
+      console.log(result.user);
+      Swal.fire(
+        'Good job!',
+        'Account Created Successfully!',
+        'success'
+      )
+
+      updateProfile(result.user,{
+        displayName : username,
+        photoURL : photo
+      })
+
+
+      navigate(location?.state ? location.state : '/');
+
+    })
+
+    .catch(error =>{
+     const ErrorMessage =error.message
+     console.log(ErrorMessage);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: ErrorMessage
+      })
+    })
+
+    
+
+
+    
+
+  }
+
+
+
+
+
     return (
         <div 
         className="hero min-h-screen  bg-cover p-20 opacity-90"
@@ -12,7 +148,7 @@ const Register = () => {
               "url(https://i.ibb.co/VJnVgmN/maxim-hopman-Q-l5-Nz-A8o4-Y-unsplash.jpg)",
           }}>
             <div className=" flex justify-center w-2/3 rounded-3xl   py-10 items-center bg-white">
-          <form className="bg-white w-2/3">
+          <form onSubmit={handleRegister} className="bg-white w-2/3">
           <h1 className=" text-gray-800 font-bold text-2xl mb-5 text-center">
               Sign Up On TrueCar
             </h1>
@@ -147,10 +283,10 @@ const Register = () => {
             </p>
           </div>
           <div>
-            <button className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
+            <button onClick={googleBtn} className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
                 <FcGoogle className='mr-5 text-2xl'></FcGoogle>
                 Sign in with google</button>
-            <button  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
+            <button onClick={githubBtn}  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
                 <FaGithub className='mr-5 text-2xl'></FaGithub>
                 Sign in with github</button>
             </div>
