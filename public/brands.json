@@ -22,13 +22,5 @@
     {
       "name": "Honda",
       "image": "https://static.tcimg.net/vehicles/logo/605x384_full_color/00fea4dbe4426fc2/Honda.png"
-    },
-    {
-      "name": "Chevrolet",
-      "image": "https://static.tcimg.net/vehicles/logo_text/820x384_full_color/1dd21e0781f0e450/Chevrolet.png"
-    },
-    {
-      "name": "Volkswagen",
-      "image": "https://static.tcimg.net/vehicles/logo_text/384x384_full_color/2e91116c833bfded/Volkswagen.png"
     }
   ]

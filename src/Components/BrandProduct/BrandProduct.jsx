@@ -13,13 +13,13 @@ const BrandProduct = () => {
   // console.log(name);
   // console.log(data);
   const filteredData = data.filter((item) => item.brandName === name);
-  // console.log(filteredData);
+  console.log(filteredData);
 
   return (
     
-    <div className="my-8 ">
+    <div className="mb-20 ">
 
-      <div className="my-8">
+      <div className="mb-8">
         <Swiper
           modules={[Navigation, Pagination, A11y]}
           spaceBetween={50}
@@ -121,7 +121,15 @@ const BrandProduct = () => {
 
 
               <h3 className="flex justify-center items-center my-12 text center text-4xl font-extrabold">Your favorite Brand Products</h3>
-     <div className="grid grid-cols-1 p-3 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+     {
+
+        filteredData.length === 0 ? ( <div>
+          <div>
+            <figure className="flex justify-center items-center"><img  src="https://i.ibb.co/T4FS2DS/360-F-101894688-RVSZUt-Df-PR6-Cr5e-BDQI7-Qo5p-Z01jmy-K3.jpg" alt="" /></figure>
+            <p className="text-2xl font-bold text-center">Sorry, there are currently no products available for this brand.</p>
+            </div>
+
+        </div> ) : <div className="grid grid-cols-1 p-3 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
      {
         filteredData.map((data) =>   { 
           console.log(data.productName);
@@ -143,7 +151,7 @@ const BrandProduct = () => {
     </div>
 
     <div className="card-actions flex justify-between ">
-     <Link >  <button className=" text-white bg-accent-focus btn ">Details</button> </Link>
+     <Link  to={`/productDetails/${data._id}`}>  <button className=" text-white bg-accent-focus btn ">Details</button> </Link>
       <Link to={`/update/${data._id}`}> <button className="text-white bg-accent-focus btn">Update</button> </Link>
     </div>
   </div>
@@ -155,6 +163,8 @@ const BrandProduct = () => {
         })
       }
      </div>
+
+     }
 
      
 

@@ -16,14 +16,14 @@ const Brands = () => {
    
         </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4 justify-center items-center gap-7 gap-y-20 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-3 justify-center items-center gap-7 gap-y-20 mb-10">
             {
                 brandName.map(brand => {
                     return (
                         <div>
                                
                            <Link to={`/home/${brand.name}`}>
-                           <div className="hover:shadow-black shadow-gray-500 rounded-xl shadow-2xl w-full lg:w-[250px] h-[150px] flex justify-center card-shadow  items-center gap-5">
+                           <div className="hover:shadow-black shadow-gray-500 rounded-xl shadow-2xl w-full h-[150px] flex justify-center card-shadow  items-center gap-5">
                            
                            <img className="w-10 h-10 " src={brand.image} alt={brand.name}/>
                            <h1 className="font-semibold text-xl">{brand.name}</h1>

@@ -4,8 +4,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 const UpdateProduct = () => {
-    const productsData = useLoaderData();
-    const {_id, photo, productName, brandName, type, price, description, rating} = productsData;
+    const productData = useLoaderData();
+    const {_id, photo, productName, brandName, type, price, description, rating} = productData;
     const { id } = useParams();
     console.log(id);
 
@@ -40,9 +40,10 @@ const UpdateProduct = () => {
                 'Product Updated Successfully!',
                 'success'
               )
+              window.history.go(-1);
           }
           
-          form.reset();
+          
         })
         
       }
