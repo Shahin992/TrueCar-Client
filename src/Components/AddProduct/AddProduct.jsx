@@ -150,7 +150,7 @@ const AddProduct = () => {
           </div>
 
         </div>
-        <button  className="w-full btn btn-secondary my-5 text-3xl font-bold " type="submit">Add Product</button>
+        <button  className="w-full btn btn bg-accent-focus text-white my-5 text-3xl font-bold " type="submit">Add Product</button>
       </form>
     </div>
   );

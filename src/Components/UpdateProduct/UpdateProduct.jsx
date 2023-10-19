@@ -169,7 +169,7 @@ const UpdateProduct = () => {
           </div>
 
         </div>
-        <button  className="w-full btn bg-accent-focus my-5 text-3xl font-bold " type="submit">Update Product</button>
+        <button  className="w-full btn bg-accent-focus text-white my-5 text-3xl font-bold " type="submit">Update Product</button>
       </form>
     </div>
             

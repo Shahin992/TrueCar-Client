@@ -6,8 +6,11 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 const ProductDetails = () => {
     const ProductData = useLoaderData();
     console.log(ProductData);
-    const {_id, photo, productName, brandName, type, price, description, rating} = ProductData;
-    const { id } = useParams();
+    const {photo,productName,price,description} = ProductData;
+    const cart = {photo,productName,price,description}
+
+    // const {_id, photo, productName, brandName, type, price, description, rating} = ProductData;
+    // const { id } = useParams();
 
 
     const handleAddToCart = () =>{
@@ -18,7 +21,7 @@ const ProductDetails = () => {
             headers : {
               'Content-Type' : 'application/json'
             },
-            body : JSON.stringify(ProductData)
+            body : JSON.stringify(cart)
         })
         .then(res => res.json())
         .then(data => {
@@ -33,11 +36,7 @@ const ProductDetails = () => {
 
         .catch(error => {
             console.log(error);
-            Swal.fire({
-                icon: 'error',
-                title: 'You added this before...!',
-                text: ''
-              })
+            
         })
     }
 
