@@ -1,3 +1,5 @@
+import WhyTrueCar from "../BrandProduct/WhyTrueCar/WhyTrueCar";
+import ReviewCard from "../ReviewCard/ReviewCard";
 import Brands from "./Brands/Brands";
 
 const Home = () => {
@@ -13,12 +15,14 @@ const Home = () => {
         <div className="hero-overlay bg-opacity-20 "></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-2xl">
-            <h1 className="mb-5 text-5xl font-bold">Your Dream Car Awaits! Explore Now. </h1>
+            <h1 className="mb-5 text-3xl lg:text-5xl font-bold">Your Dream Car Awaits! Explore Now. </h1>
             <button className="text-white bg-accent-focus btn">Shop Now</button>
           </div>
         </div>
       </div>
+      <ReviewCard></ReviewCard>
       <Brands></Brands>
+      <WhyTrueCar></WhyTrueCar>
     </div>
   );
 };

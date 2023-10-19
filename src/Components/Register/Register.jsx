@@ -151,19 +151,19 @@ const Register = () => {
 
     return (
         <div 
-        className="hero min-h-screen  bg-cover p-20 opacity-90"
+        className="hero min-h-screen  bg-cover p-7 py-20 md:p-20 opacity-90"
         style={{
             
             backgroundImage:
               "url(https://i.ibb.co/VJnVgmN/maxim-hopman-Q-l5-Nz-A8o4-Y-unsplash.jpg)",
           }}>
-            <div className=" flex justify-center w-2/3 rounded-3xl   py-10 items-center bg-white">
+            <div className=" flex justify-center w-full md:w-2/3 rounded-3xl   py-10 items-center bg-white">
           <form onSubmit={handleRegister} className="bg-white w-2/3">
           <h1 className=" text-gray-800 font-bold text-2xl mb-5 text-center">
               Sign Up On TrueCar
             </h1>
             
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+            <div className="flex items-center border-2 py-2 md:px-3 rounded-2xl mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-gray-400"
@@ -185,7 +185,7 @@ const Register = () => {
                 placeholder="Full name"
               />
             </div>
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+            <div className="flex items-center border-2 py-2 md:px-3 rounded-2xl mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-gray-400"
@@ -207,7 +207,7 @@ const Register = () => {
                 placeholder="Photo URL"
               />
             </div>
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+            <div className="flex items-center border-2 py-2 md:px-3 rounded-2xl mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-gray-400"
@@ -231,7 +231,7 @@ const Register = () => {
                 placeholder="Username"
               />
             </div>
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+            <div className="flex items-center border-2 py-2 md:px-3 rounded-2xl mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-gray-400"
@@ -255,7 +255,7 @@ const Register = () => {
                 placeholder="Email Address"
               />
             </div>
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
+            <div className="flex items-center border-2 py-2 md:px-3 rounded-2xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-gray-400"
@@ -293,10 +293,10 @@ const Register = () => {
             </p>
           </div>
           <div>
-            <button onClick={googleBtn} className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
+            <button onClick={googleBtn} className= 'flex justify-center items-center  w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
                 <FcGoogle className='mr-5 text-2xl'></FcGoogle>
                 Sign in with google</button>
-            <button onClick={githubBtn}  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
+            <button onClick={githubBtn}  className= 'flex justify-center items-center  w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '>
                 <FaGithub className='mr-5 text-2xl'></FaGithub>
                 Sign in with github</button>
             </div>

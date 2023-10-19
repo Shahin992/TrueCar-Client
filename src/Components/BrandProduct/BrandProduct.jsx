@@ -41,7 +41,7 @@ const BrandProduct = () => {
               <div className="hero-overlay bg-opacity-60"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="w-2/3">
-                  <h1 className="mb-5 text-5xl font-bold">
+                  <h1 className="mb-5 text-xl lg:text-5xl font-bold">
                     Unbeatable Savings: Get Your Discount Now!
                   </h1>
 
@@ -62,7 +62,7 @@ const BrandProduct = () => {
               <div className="hero-overlay bg-opacity-60"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="w-2/3">
-                  <h1 className="mb-5 text-5xl font-bold">
+                  <h1 className="mb-5 text-xl lg:text-5xl font-bold">
                     Unlock the Road to Savings! Discover Quality Cars and
                     Incredible Deals on TrueCar
                   </h1>
@@ -84,7 +84,7 @@ const BrandProduct = () => {
               <div className="hero-overlay bg-opacity-60"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="w-2/3">
-                  <h1 className="mb-5 text-5xl font-bold">
+                  <h1 className="mb-5 text-xl lg:text-5xl font-bold">
                     Shift Gears Towards Savings! Find the Perfect Ride. Your
                     Next Adventure Begins Here!
                   </h1>
@@ -106,7 +106,7 @@ const BrandProduct = () => {
               <div className="hero-overlay bg-opacity-60"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="w-2/3">
-                  <h1 className="mb-5 text-5xl font-bold">
+                  <h1 className="mb-5 text-xl lg:text-5xl font-bold">
                     Revolutionize Your Wheels! Explore Premium Car Listings.
                     Start Your Automotive Journey Today!"
                   </h1>
