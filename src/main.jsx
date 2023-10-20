@@ -38,8 +38,7 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <MyCart></MyCart>
           </PrivateRoute>
-        ),
-        loader: () => fetch("https://server-site-taupe.vercel.app/mycart"),
+        )
       },
       {
         path: "/register",

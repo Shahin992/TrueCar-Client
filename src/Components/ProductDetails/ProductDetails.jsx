@@ -1,21 +1,26 @@
 import { useContext } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
+
 const ProductDetails = () => {
+  
   const ProductData = useLoaderData();
   const { user } = useContext(AuthContext);
   const cartUser = user.email;
   console.log(cartUser);
   const { photo, productName, price, description } = ProductData;
   const cart = { photo, productName, price, description, cartUser };
+ 
+  
 
   // const {_id, photo, productName, brandName, type, price, description, rating} = ProductData;
   // const { id } = useParams();
 
   const handleAddToCart = () => {
+    
     console.log("product added to cart");
     console.log(ProductData);
     fetch("https://server-site-taupe.vercel.app/mycart", {

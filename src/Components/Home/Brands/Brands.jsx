@@ -23,11 +23,24 @@ const Brands = () => {
                         <div>
                                
                            <Link to={`/home/${brand.name}`}>
-                           <div className="hover:shadow-black shadow-gray-500 rounded-xl shadow-2xl w-full h-[150px] flex justify-center card-shadow  items-center gap-5">
+                           
+                           {/* <div className="hover:shadow-black shadow-gray-500 rounded-xl shadow-2xl w-full h-[150px] flex justify-center card-shadow  items-center gap-5">
                            
                            <img className="w-10 h-10 " src={brand.image} alt={brand.name}/>
                            <h1 className="font-semibold text-xl">{brand.name}</h1>
-                       </div></Link>
+                       </div> */}
+
+
+<div className="card  bg-base-100  h-64 shadow-xl image-full">
+  <figure><img className="w-full h-full" src={brand.image} alt="Shoes" /></figure>
+  <div className="card-body justify-end items-end">
+    <div className="card-actions ">
+      <button className="btn btn-outline btn-info normal-case text-3xl font-bold">{brand.name}</button>
+    </div>
+  </div>
+</div>
+                       
+                       </Link>
 
 
 

@@ -227,7 +227,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-        <ThemeButton />
+        {/* <ThemeButton /> */}
           {user ? (
             <div className="flex gap-4 justify-center items-center">
               <div className="flex flex-col justify-center items-center">
