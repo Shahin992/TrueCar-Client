@@ -1,96 +1,93 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
-
 const LogIn = () => {
-
-  const {login,googleLogin,githubLogin} = useContext(AuthContext);
+  const { login, googleLogin, githubLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   const googleBtn = () => {
     googleLogin()
-    .then(result =>{
-      console.log(result.user);
-      Swal.fire(
-        'Good job!',
-        'Log in Successfully!',
-        'success'
-      )
-      navigate(location?.state ? location.state : '/');
-    })
-    .catch(error =>{
-      console.log(error.message); 
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong! Please check your email and password',
+      .then((result) => {
+        console.log(result.user);
+        fetch("https://server-site-taupe.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        });
+        Swal.fire("Good job!", "Log in Successfully!", "success");
+
+        navigate(location?.state ? location.state : "/");
       })
-    })
-  }
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please check your email and password",
+        });
+      });
+  };
 
   const githubBtn = () => {
     githubLogin()
-    .then(result =>{
-      console.log(result.user);
-      Swal.fire(
-        'Good job!',
-        'Log in Successfully!',
-        'success'
-      )
-      navigate(location?.state ? location.state : '/');
-    })
-
-    .catch(error =>{
-      console.log(error.message); 
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong! Please check your email and password',
+      .then((result) => {
+        console.log(result.user);
+        fetch("https://server-site-taupe.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        });
+        Swal.fire("Good job!", "Log in Successfully!", "success");
+        navigate(location?.state ? location.state : "/");
       })
-    })
 
-  }
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please check your email and password",
+        });
+      });
+  };
 
-  const handleLogin = (e) =>{
+  const handleLogin = (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email,password);
+    console.log(email, password);
 
-    login(email,password)
-    .then(result =>{
-      console.log(result.user);
-      Swal.fire(
-        'Good job!',
-        'Log in Successfully!',
-        'success'
-      )
-      navigate(location?.state ? location.state : '/');
-    })
-
-    .catch(error =>{
-      console.log(error.message); 
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong! Please check your email and password',
+    login(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire("Good job!", "Log in Successfully!", "success");
+        navigate(location?.state ? location.state : "/");
       })
-    })
-  }
 
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please check your email and password",
+        });
+      });
+  };
 
-  
-    return (
-        <div>
-            <div className="flex flex-col mt-10 justify-center items-center">
-        </div>
+  return (
+    <div>
+      <div className="flex flex-col mt-10 justify-center items-center"></div>
       <div className="p-4 my-10 flex md:flex-row flex-col">
         <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
           <img
@@ -100,9 +97,9 @@ const LogIn = () => {
           />
         </div>
         <div>
-            <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogin}>
             <h1 className=" text-gray-800 font-bold text-2xl mb-5 text-center">
-             Log in!
+              Log in!
             </h1>
             <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
               <svg
@@ -159,30 +156,44 @@ const LogIn = () => {
             <a
               href="#!"
               className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-              >Forgot password?</a
             >
-          
-            <p className="mt-5 ">Don't have any account? please <Link  className="text-2xl font-semibold hover:underline hover:text-accent" to={'/register'}>Register</Link> </p>
-            
-            </form>
-            <div
-            className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
-            <p
-              className="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
+              Forgot password?
+            </a>
+
+            <p className="mt-5 ">
+              Don't have any account? please{" "}
+              <Link
+                className="text-2xl font-semibold hover:underline hover:text-accent"
+                to={"/register"}
+              >
+                Register
+              </Link>{" "}
+            </p>
+          </form>
+          <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+            <p className="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
               OR
             </p>
           </div>
 
-            <div>
-            <button onClick={googleBtn}  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '><FcGoogle className='mr-5 text-2xl'></FcGoogle>Sign in with google</button>
-            <button onClick={githubBtn}  className= 'flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 '><FaGithub className='mr-5 text-2xl'></FaGithub>Sign in with github</button>
-            </div>
-
+          <div>
+            <button
+              onClick={googleBtn}
+              className="flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 "
+            >
+              <FcGoogle className="mr-5 text-2xl"></FcGoogle>Sign in with google
+            </button>
+            <button
+              onClick={githubBtn}
+              className="flex justify-center items-center block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 "
+            >
+              <FaGithub className="mr-5 text-2xl"></FaGithub>Sign in with github
+            </button>
+          </div>
         </div>
       </div>
-            
-        </div>
-    );
+    </div>
+  );
 };
 
 export default LogIn;

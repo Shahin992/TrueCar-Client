@@ -4,13 +4,10 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 
 const ProductCart = ({ product, products, setProducts }) => {
-  const { _id, photo, productName, brandName, price } = product;
-  
+  console.log(product);
+  const { _id, photo, productName, price } = product;
 
   const handleDelete = (id) => {
-
-    console.log(products);
-   
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -21,7 +18,7 @@ const ProductCart = ({ product, products, setProducts }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/mycart/${id}`, {
+        fetch(`https://server-site-taupe.vercel.app/mycart/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -29,11 +26,10 @@ const ProductCart = ({ product, products, setProducts }) => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              
             }
             const remainingProducts = products.filter((data) => data._id != id);
             console.log(remainingProducts._id);
-              setProducts(remainingProducts);
+            setProducts(remainingProducts);
           });
       }
     });
@@ -41,8 +37,6 @@ const ProductCart = ({ product, products, setProducts }) => {
 
   return (
     <div>
-      
-
       <div className="card lg:card-side lg:h-[200px] bg-base-100 shadow-xl">
         <figure className="md:w-1/2">
           <img className="h-52 w-full" src={photo} alt="Album" />
@@ -50,8 +44,7 @@ const ProductCart = ({ product, products, setProducts }) => {
         <div className="card-body md:w-1/2 bg-teal-100">
           <h2 className="card-title mb-2">{productName}</h2>
           <p className="text-xl font-medium">Price: ${price}</p>
-          <p className="text-xl font-medium">Brand: {brandName}</p>
-          <div className="card-actions justify-end">
+          <div className="card-actions my-5 justify-end">
             <button className="btn btn-outline btn-success">Buy Now</button>
             <button onClick={() => handleDelete(_id)} className="btn btn-error">
               Delete

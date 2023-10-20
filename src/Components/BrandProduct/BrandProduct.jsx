@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { Navigation, Pagination, A11y } from "swiper/modules";
@@ -5,6 +6,35 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+
+
+const StarRating = ({ rating }) => {
+  const sanitizedRating = Math.min(5, Math.max(1, rating));
+  
+  const filledStars = Math.floor(sanitizedRating);
+  const remainingFraction = sanitizedRating - filledStars;
+
+  const stars = [];
+  for (let i = 0; i < filledStars; i++) {
+    stars.push(<span key={i} className="star checked">&#9733;</span>);
+  }
+  if (remainingFraction >= 0.25 && remainingFraction < 0.75) {
+    stars.push(<span key="half" className="star checked">&#9733.5;</span>);
+  } else if (remainingFraction >= 0.75) {
+    stars.push(<span key="filled" className="star checked">&#9733;</span>);
+  }
+  for (let i = stars.length+1; i < 5; i++) {
+    stars.push(<span key={i} className="star">&#9733;</span>);
+  }
+
+  return (
+    <div className="star-rating">
+      {stars}
+    </div>
+  );
+};
+
 
 
 const BrandProduct = () => {
@@ -145,9 +175,9 @@ const BrandProduct = () => {
       <h3 className="text-lg font-medium">Brand: {data.brandName}</h3>
       <h3 className="text-lg font-medium">Type: {data.type}</h3>
     </div>
-    <div className="flex justify-between my-2">
-      <h3 className="text-lg font-medium">Price: ${data.price}</h3>
-      <h3 className="text-lg font-medium">Rating:{data.rating}</h3>
+    <div className="flex flex-col justify-between my-2">
+      <h3 className="text-2xl font-semibold mb-2">Price: ${data.price}</h3>
+      <h3 className="text-orange-400 text-[44px]"><StarRating rating={data.rating}/></h3>
     </div>
 
     <div className="card-actions flex justify-between ">

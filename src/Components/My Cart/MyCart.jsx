@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useLoaderData } from "react-router-dom";
 import ProductCart from "./ProductCard/ProductCart";
 import { useState } from "react";

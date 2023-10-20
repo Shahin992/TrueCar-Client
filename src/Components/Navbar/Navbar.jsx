@@ -1,11 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
+import useTheme from "../../../useTheme";
+
+function ThemeButton() {
+  const { toggleTheme } = useTheme();
+
+  return <button onClick={toggleTheme}>Change Theme</button>;
+}
 
 const Navbar = () => {
-
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
@@ -23,8 +29,6 @@ const Navbar = () => {
         });
       });
   };
-
-
 
   return (
     <div className="bg-black">
@@ -51,7 +55,7 @@ const Navbar = () => {
               tabIndex={0}
               className="text-black menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
+               <li>
               <NavLink
                 to="/"
                 className={({ isActive, isPending }) =>
@@ -93,34 +97,43 @@ const Navbar = () => {
                 My Cart
               </NavLink>
             </li>
-            <li>
-          <NavLink
-            to="/register"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "pending"
-                : isActive
-                ? "text-white bg-accent-focus text-lg font-bold underline"
-                : ""
-            }
-          >
-            Register
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/login"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "pending"
-                : isActive
-                ? "text-white bg-accent-focus text-lg font-bold underline"
-                : ""
-            }
-          >
-            Login
-          </NavLink>
-        </li>
+
+            {user ? (
+              <></>
+            ) : (
+              <li>
+                <NavLink
+                  to="/register"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-white bg-accent-focus text-lg font-bold underline"
+                      : ""
+                  }
+                >
+                  Register
+                </NavLink>
+              </li>
+            )}
+
+            {user ? (
+              <></>
+            ) : (
+              <li>
+                <NavLink
+                  to="/login"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-white bg-accent-focus text-lg font-bold underline"
+                      : ""
+                  }
+                >
+                  Log in
+                </NavLink>
+              </li>)}
             </ul>
           </div>
           <img
@@ -174,68 +187,76 @@ const Navbar = () => {
               </NavLink>
             </li>
 
+            {user ? (
+              <></>
+            ) : (
+              <li>
+                <NavLink
+                  to="/register"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-white bg-accent-focus text-lg font-bold underline"
+                      : ""
+                  }
+                >
+                  Register
+                </NavLink>
+              </li>
+            )}
 
-            {
-          user ? <></> :  <li>
-          <NavLink
-            to="/register"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "pending"
-                : isActive
-                ? "text-white bg-accent-focus text-lg font-bold underline"
-                : ""
-            }
-          >
-            Register
-          </NavLink>
-        </li>
-         }
-
-
-{
-            user ? <></> :<li>
-            <NavLink
-              to="/login"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "text-white bg-accent-focus text-lg font-bold underline"
-                  : ""
-              }
-            >
-              Log in
-            </NavLink>
-            
-          </li>
-          }
-
-
+            {user ? (
+              <></>
+            ) : (
+              <li>
+                <NavLink
+                  to="/login"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "text-white bg-accent-focus text-lg font-bold underline"
+                      : ""
+                  }
+                >
+                  Log in
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
-        {user ? (
-          <div className="flex gap-4 justify-center items-center">
-            <div className="flex flex-col justify-center items-center">
-            <div className="w-12 h-12 rounded-full overflow-hidden">
-              <img className="w-full h-full object-cover" src={user.photoURL} alt="" />
+        <ThemeButton />
+          {user ? (
+            <div className="flex gap-4 justify-center items-center">
+              <div className="flex flex-col justify-center items-center">
+                <div className="w-12 h-12 rounded-full overflow-hidden">
+                  <img
+                    className="w-full h-full object-cover"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium">{user.displayName}</h3>
+                </div>
+              </div>
+              <div>
+                <button
+                  className="btn btn-accent text-white font-medium"
+                  onClick={handleLogOut}
+                >
+                  Log Out
+                </button>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-medium">{user.displayName}</h3>
-            </div>
-            </div>
-            <div>
-              <button className="btn btn-accent text-white font-medium" onClick={handleLogOut}>
-                Log Out
-              </button>
-            </div>
-          </div>
-        ) : (
-          <Link className="btn btn-accent text-white font-medium" to="/login">
-            log in
-          </Link>
-        )}
+          ) : (
+            <Link className="btn btn-accent text-white font-medium" to="/login">
+              log in
+            </Link>
+          )}
+          
         </div>
       </div>
     </div>
