@@ -42,7 +42,7 @@ const ProductCart = ({ product, products, setProducts }) => {
           <img className="h-52 w-full" src={photo} alt="Album" />
         </figure>
         <div className="card-body md:w-1/2 rounded-r-3xl bg-teal-100">
-          <h2 className="card-title text-2xl font-extrabold mb-2">{productName}</h2>
+          <h2 className="card-title dark:text-white text-2xl font-extrabold mb-2">{productName}</h2>
           <p className="text-2xl font-bold text-red-500 ">Price: ${price}</p>
           <div className="card-actions my-5 justify-end">
             <button className="btn btn-outline btn-success">Buy Now</button>

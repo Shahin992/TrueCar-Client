@@ -7,9 +7,11 @@
   }
   [data-theme='dark'] {
     --my-color: #000;
+    --text-color: #fff;
   }
   [data-theme='light'] {
     --my-color: #fff;
+    --text-color: #000;
   }
 
   body {

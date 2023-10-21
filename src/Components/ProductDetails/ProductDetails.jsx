@@ -52,7 +52,7 @@ const ProductDetails = () => {
             alt="Album"
           />
         </figure>
-        <div className="card-body lg:w-3/4 bg-stone-200 rounded-b-3xl lg:rounded-tr-3xl lg:rounded-br-3xl">
+        <div className="card-body lg:w-3/4 dark:bg-slate-100 rounded-b-3xl lg:rounded-tr-3xl lg:rounded-br-3xl">
           <h2 className="card-title text-3xl md:text-5xl font-extrabold mb-3">
             {productName}
           </h2>

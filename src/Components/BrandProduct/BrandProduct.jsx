@@ -190,7 +190,7 @@ const BrandProduct = () => {
                   <figure>
                     <img className="h-60 w-full" src={data.photo} alt="Shoes" />
                   </figure>
-                  <div className="card-body rounded-b-3xl bg-zinc-300 shadow-2xl shadow-slate-400">
+                  <div className="card-body rounded-b-3xl dark:bg-slate-100 light:bg-zinc-300 shadow-2xl shadow-slate-400">
                     <h2 className="card-title text-3xl font-bold mb-2">
                       {data.productName}
                     </h2>
