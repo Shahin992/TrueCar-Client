@@ -4,23 +4,18 @@ import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
-
 const ProductDetails = () => {
-  
   const ProductData = useLoaderData();
   const { user } = useContext(AuthContext);
   const cartUser = user.email;
   console.log(cartUser);
   const { photo, productName, price, description } = ProductData;
   const cart = { photo, productName, price, description, cartUser };
- 
-  
 
   // const {_id, photo, productName, brandName, type, price, description, rating} = ProductData;
   // const { id } = useParams();
 
   const handleAddToCart = () => {
-    
     console.log("product added to cart");
     console.log(ProductData);
     fetch("https://server-site-taupe.vercel.app/mycart", {
@@ -68,7 +63,7 @@ const ProductDetails = () => {
           <div className="card-actions justify-end">
             <button
               onClick={handleAddToCart}
-              className="text-white bg-accent-focus btn"
+              className="text-white bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 btn"
             >
               Add To Cart
             </button>

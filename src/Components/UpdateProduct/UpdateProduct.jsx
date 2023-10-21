@@ -180,7 +180,7 @@ const UpdateProduct = () => {
             </div>
           </div>
           <button
-            className="w-full btn bg-accent-focus text-white my-5 text-3xl font-bold "
+            className="w-full btn bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white my-5 text-3xl font-bold "
             type="submit"
           >
             Update Product

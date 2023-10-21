@@ -25,9 +25,9 @@ const MyCart = () => {
     <div className="max-w-7xl p-3 mx-auto mb-10">
       <h3 className="text-5xl font-extrabold text-center mb-10 ">My Cart</h3>
       {
-        products.length === 0 ? <div className="flex justify-center items-center "><img className="h-64 rounded-2xl  md:w-96" src="https://i.ibb.co/yXM8g9W/24dc1c97-29b0-4c0a-a6bc-895fb5977fc1.jpg" alt="" /></div>
+        products.length === 0 ? <div className="flex justify-center items-center "><img className="h-64 rounded-2xl  lg:w-96" src="https://i.ibb.co/yXM8g9W/24dc1c97-29b0-4c0a-a6bc-895fb5977fc1.jpg" alt="" /></div>
         : 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-8 lg:gap-16">
         {
             products.map((product) => <ProductCart product={product}
             products={products}

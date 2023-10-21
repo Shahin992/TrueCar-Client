@@ -25,7 +25,7 @@ const ProductCart = ({ product, products, setProducts }) => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Deleted!", "The Car has been deleted.", "success");
             }
             const remainingProducts = products.filter((data) => data._id != id);
             console.log(remainingProducts._id);
@@ -37,13 +37,13 @@ const ProductCart = ({ product, products, setProducts }) => {
 
   return (
     <div>
-      <div className="card lg:card-side lg:h-[200px] bg-base-100 shadow-xl">
+      <div className="card md:card-side md:h-[200px] bg-base-100 shadow-xl">
         <figure className="md:w-1/2">
           <img className="h-52 w-full" src={photo} alt="Album" />
         </figure>
-        <div className="card-body md:w-1/2 bg-teal-100">
-          <h2 className="card-title mb-2">{productName}</h2>
-          <p className="text-xl font-medium">Price: ${price}</p>
+        <div className="card-body md:w-1/2 rounded-r-3xl bg-teal-100">
+          <h2 className="card-title text-2xl font-extrabold mb-2">{productName}</h2>
+          <p className="text-2xl font-bold text-red-500 ">Price: ${price}</p>
           <div className="card-actions my-5 justify-end">
             <button className="btn btn-outline btn-success">Buy Now</button>
             <button onClick={() => handleDelete(_id)} className="btn btn-error">

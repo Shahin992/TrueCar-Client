@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const WhyTrueCar = () => {
   return (
     <div>
-      <div className="bg-black my-10">
+      <div className="bg-black dark:bg-white my-10">
         <div>
-          <h3 className="py-10 text-2xl text-white text-center lg:text-5xl font-bold">
+          <h3 className="py-10 text-2xl text-white  text-center lg:text-5xl font-bold">
             Why TrueCar?
           </h3>
         </div>

@@ -261,7 +261,7 @@ const Register = () => {
           </div>
           <button
             type="submit"
-            className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
+            className="block w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
           >
             Sign Up
           </button>
@@ -283,14 +283,14 @@ const Register = () => {
           <div>
             <button
               onClick={googleBtn}
-              className="flex justify-center items-center  w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 "
+              className="flex justify-center items-center  w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 "
             >
               <FcGoogle className="mr-5 text-2xl"></FcGoogle>
               Sign Up with google
             </button>
             <button
               onClick={githubBtn}
-              className="flex justify-center items-center  w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 "
+              className="flex justify-center items-center  w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 "
             >
               <FaGithub className="mr-5 text-2xl"></FaGithub>
               Sign Up with github
